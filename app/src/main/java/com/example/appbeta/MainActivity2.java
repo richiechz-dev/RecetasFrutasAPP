@@ -28,7 +28,7 @@ import org.json.JSONObject;
     Button btnBuscar;
     TextView textView2;
     EditText Ingrediente;
-
+    Button admin1;
     RequestQueue requestQueue;
 
     @Override
@@ -48,14 +48,25 @@ import org.json.JSONObject;
         });
 
         textView2=(TextView)findViewById(R.id.textView2);
-        btnBuscar=(Button)findViewById(R.id.btnBuscar);
+        anterior=(ImageButton)findViewById(R.id.imageButton2);
         Ingrediente=(EditText)findViewById(R.id.Ingrediente);
+        admin1=(Button) findViewById(R.id.btnadmin);
+        btnBuscar= (Button) findViewById(R.id.btnBuscar);
 
         btnBuscar.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                 buscar1("http://localhost/android/buscar.php?ingrediente="+Ingrediente.getText().toString());
+            }
+
+        });
+        admin1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity2.this, mainAdmin.class);
+                startActivity(i);
             }
 
         });
