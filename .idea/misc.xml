@@ -4,9 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/GICRC/AndroidStudioProjects/RecetasFrutasAPP/app/src/main/res/drawable/button_rounded.xml" value="0.2265" />
+        <entry key="..\:/Users/GICRC/AndroidStudioProjects/RecetasFrutasAPP/app/src/main/res/drawable/button_social.xml" value="0.2265" />
+        <entry key="..\:/Users/GICRC/AndroidStudioProjects/RecetasFrutasAPP/app/src/main/res/drawable/ic_delete_24.xml" value="0.2265" />
+        <entry key="..\:/Users/GICRC/AndroidStudioProjects/RecetasFrutasAPP/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2265" />
         <entry key="..\:/Users/GICRC/AndroidStudioProjects/RecetasFrutasAPP/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/GICRC/AndroidStudioProjects/RecetasFrutasAPP/app/src/main/res/layout/activity_main2.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/GICRC/AndroidStudioProjects/RecetasFrutasAPP/app/src/main/res/layout/activity_main2.xml" value="0.264" />
         <entry key="..\:/Users/GICRC/AndroidStudioProjects/RecetasFrutasAPP/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/GICRC/AndroidStudioProjects/RecetasFrutasAPP/app/src/main/res/layout/activity_update.xml" value="0.25" />
+        <entry key="..\:/Users/GICRC/AndroidStudioProjects/RecetasFrutasAPP/app/src/main/res/layout/view_user_single.xml" value="0.25" />
         <entry key="..\:/Users/GICRC/Documents/appBeta/app/src/main/res/layout/activity_main.xml" value="0.20512820512820512" />
         <entry key="..\:/Users/alexd/AndroidStudioProjects/appBeta/app/src/main/res/drawable/button_rounded.xml" value="0.2105" />
         <entry key="..\:/Users/alexd/AndroidStudioProjects/appBeta/app/src/main/res/drawable/button_social.xml" value="0.17" />

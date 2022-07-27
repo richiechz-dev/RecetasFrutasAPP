@@ -26,7 +26,7 @@ import org.json.JSONObject;
 
     ImageButton anterior;
     Button btnBuscar;
-    TextView textView2;
+    TextView textView3;
     EditText Ingrediente;
     Button admin1;
     RequestQueue requestQueue;
@@ -47,7 +47,7 @@ import org.json.JSONObject;
             }
         });
 
-        textView2=(TextView)findViewById(R.id.textView2);
+        textView3=(TextView)findViewById(R.id.textView3);
         anterior=(ImageButton)findViewById(R.id.imageButton2);
         Ingrediente=(EditText)findViewById(R.id.Ingrediente);
         admin1=(Button) findViewById(R.id.btnadmin);
@@ -57,7 +57,7 @@ import org.json.JSONObject;
 
             @Override
             public void onClick(View v) {
-                buscar1("http://localhost/android/buscar.php?ingrediente="+Ingrediente.getText().toString());
+                buscar1("http://192.168.1.66/appBeta/fetch.php?fruto="+Ingrediente.getText().toString());
             }
 
         });
@@ -81,7 +81,7 @@ import org.json.JSONObject;
                 for(int i=0;i<response.length();i++){
                     try{
                         jsonObject=response.getJSONObject(i);
-                        textView2.setText(jsonObject.getString("Receta"));
+                        textView3.setText(jsonObject.getString("receta"));
                     }catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
