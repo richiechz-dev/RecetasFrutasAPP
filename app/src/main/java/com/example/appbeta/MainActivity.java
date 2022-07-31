@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.an.biometric.BiometricCallback;
+import com.an.biometric.BiometricManager;
 import com.google.android.gms.safetynet.SafetyNet;
 import com.google.android.gms.safetynet.SafetyNetApi;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BiometricCallback {
 
     Button access;
     Button regis;
@@ -45,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
+
+        new BiometricManager.BiometricBuilder(MainActivity.this)
+                .setTitle("AppBeta")
+                .setSubtitle("huella digital")
+                .setDescription("ingrese su huella")
+                .setNegativeButtonText("-")
+                .build()
+                .authenticate(MainActivity.this);
 
         access.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +97,57 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "ERROR AL INICIAR SESIÓN", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onSdkVersionNotSupported() {
+
+    }
+
+    @Override
+    public void onBiometricAuthenticationNotSupported() {
+
+    }
+
+    @Override
+    public void onBiometricAuthenticationNotAvailable() {
+
+    }
+
+    @Override
+    public void onBiometricAuthenticationPermissionNotGranted() {
+
+    }
+
+    @Override
+    public void onBiometricAuthenticationInternalError(String error) {
+
+    }
+
+    @Override
+    public void onAuthenticationFailed() {
+
+    }
+
+    @Override
+    public void onAuthenticationCancelled() {
+
+    }
+
+    @Override
+    public void onAuthenticationSuccessful() {
+        Toast.makeText(this, "Inicio correcto", Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
+
+    }
+
+    @Override
+    public void onAuthenticationError(int errorCode, CharSequence errString) {
+
     }
 
     /*protected void onStart(){
