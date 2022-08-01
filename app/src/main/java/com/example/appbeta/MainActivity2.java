@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -22,7 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
- public class MainActivity2 extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity {
 
     ImageButton anterior;
     Button btnBuscar;
@@ -35,6 +36,8 @@ import org.json.JSONObject;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         anterior=(ImageButton)findViewById(R.id.imageButton2);
 
@@ -77,11 +80,11 @@ import org.json.JSONObject;
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                JSONObject jsonObject=null;
+                JSONArray jsonArray=null;
                 for(int i=0;i<response.length();i++){
                     try{
-                        jsonObject=response.getJSONObject(i);
-                        textView3.setText(jsonObject.getString("receta"));
+                        jsonArray=response.getJSONArray(i);
+                        textView3.setText(jsonArray.getString(Integer.parseInt("receta")));
                     }catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -98,4 +101,4 @@ import org.json.JSONObject;
         requestQueue.add(jsonArrayRequest);
     }
 
- }
+}
