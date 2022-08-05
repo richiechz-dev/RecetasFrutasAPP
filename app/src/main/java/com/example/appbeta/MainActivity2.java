@@ -1,18 +1,15 @@
 package com.example.appbeta;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -27,8 +24,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     ImageButton anterior;
     Button btnBuscar;
-    TextView textView3;
-    EditText Ingrediente;
+    EditText Ingrediente, textView3;
     Button admin1;
     RequestQueue requestQueue;
 
@@ -50,20 +46,20 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
-        textView3=(TextView)findViewById(R.id.textView3);
+        textView3=(EditText)findViewById(R.id.textView3);
         anterior=(ImageButton)findViewById(R.id.imageButton2);
         Ingrediente=(EditText)findViewById(R.id.Ingrediente);
         admin1=(Button) findViewById(R.id.btnadmin);
         btnBuscar= (Button) findViewById(R.id.btnBuscar);
 
-        btnBuscar.setOnClickListener(new View.OnClickListener(){
 
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buscar1("http://192.168.1.66/appBeta/fetch.php?fruto="+Ingrediente.getText().toString());
+                buscarReceta("http://192.168.1.67/appBeta/fetch.php?fruto="+Ingrediente.getText()+"");
             }
-
         });
+
         admin1.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -76,29 +72,34 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
 
-    private void buscar1(String URL){
+
+
+    public void buscarReceta(String URL){
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                JSONArray jsonArray=null;
-                for(int i=0;i<response.length();i++){
-                    try{
-                        jsonArray=response.getJSONArray(i);
-                        textView3.setText(jsonArray.getString(Integer.parseInt("receta")));
-                    }catch (JSONException e) {
+                JSONObject jsonObject = null;
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        textView3.setText(jsonObject.getString("receta"));
+
+                    } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
+
             }
-        }, new Response.ErrorListener(){
+        }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error){
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error de Conexion", Toast.LENGTH_SHORT).show();
             }
         }
         );
-        requestQueue= Volley.newRequestQueue(this);
+        requestQueue=Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
+
     }
 
 }
