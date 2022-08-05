@@ -93,7 +93,7 @@ public class MainActivity2 extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error de Conexion", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error de Conexionn", Toast.LENGTH_SHORT).show();
             }
         }
         );
